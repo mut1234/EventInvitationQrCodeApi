@@ -18,17 +18,17 @@ namespace EventInvitationQrCodeApi.Controllers
         {
             _db = db;
         }
-
+                
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<User>>> Getclients()
         {
-            var result = await _db.Users.ToListAsync();
+            var result = await _db.Users.Include(e=>e.QrCode).ToListAsync();
 
             return Ok(result);
 
         }
-
+       
 
         [HttpGet("{id:int}", Name = "GetClientById")]
         [ProducesResponseType(StatusCodes.Status200OK)]

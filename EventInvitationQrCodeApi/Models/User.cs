@@ -18,13 +18,15 @@ namespace EventInvitationQrCodeApi.Models
 
         public DateTime UserDateAddedToSystem { get; set; }// the date that when client added to system
 
-        public ICollection<Event> Event { get; set; } = new List<Event>();
+
+        public ICollection<Event> Events { get; set; } = new List<Event>();
 
 
-        public ICollection<QrCode2> QrCode2 { get; set; } = new List<QrCode2>();
+        public ICollection<QrCode> QrCode { get; set; } = new List<QrCode>();
 
 
         public List<UserEvent> UserEvent { get; set; }
+
 
 
 

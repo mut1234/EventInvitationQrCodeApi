@@ -13,7 +13,7 @@
         public DateTime EventDate { get; set; }
 
 
-        public ICollection<User> User { get; set; } = new List<User>();
+        public ICollection<User> Users { get; set; } = new List<User>();
 
         public List<UserEvent> UserEvent { get; set; }
 

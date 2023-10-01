@@ -1,5 +1,7 @@
 using EventInvitationQrCodeApi.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(o =>
 o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddControllers().AddJsonOptions(o => 
+{
+    o.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+})
+.AddNewtonsoftJson(o=>
+    o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
 
 var app = builder.Build();
 
